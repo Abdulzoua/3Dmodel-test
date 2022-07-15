@@ -42,10 +42,10 @@
         const controls = new OrbitControls( camera, renderer.domElement);
         controls.addEventListener('change', renderer);
 
-        const hlight = new THREE.AmbientLight (0x404040,100);
+        const hlight = new THREE.AmbientLight (0x404040,30);
         scene.add(hlight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff,100);
+        const directionalLight = new THREE.DirectionalLight(0xffffff,30);
         directionalLight.position.set(0,1,0);
         directionalLight.castShadow = true;
         scene.add(directionalLight);
