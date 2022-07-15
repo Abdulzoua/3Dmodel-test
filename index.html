@@ -28,6 +28,7 @@
       function init() {
         renderer = new THREE.WebGLRenderer({antialias:true});
         renderer.setSize(window.innerWidth,window.innerHeight);
+        renderer.outputEncoding = THREE.sRGBEncoding;
         document.body.appendChild(renderer.domElement);
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xdddddd);
@@ -65,7 +66,7 @@
 
 
         const loader = new GLTFLoader();
-        loader.load('out.glb', function(gltf){
+        loader.load('Fin-Corner-Model.glb', function(gltf){
          const car = gltf.scene.children[0];
           car.scale.set(0.5,0.5,0.5);
           scene.add(gltf.scene);
@@ -74,6 +75,7 @@
       }
       function animate() {
         renderer.render(scene,camera);
+       
         requestAnimationFrame(animate);
       }
       init();
