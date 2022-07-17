@@ -86,11 +86,11 @@
 
 							child.material.side = THREE.DoubleSide;
 
-							child.scale.multiplyScalar( 1 );
+							child.scale.multiplyScalar( 4 );
 
 							// recenter
 
-							new THREE.Box3().setFromObject( child ).getCenter( child.position ).multiplyScalar(2 );
+							new THREE.Box3().setFromObject( child ).getCenter( child.position ).multiplyScalar(6 );
 
 							scene.add( child );
 
