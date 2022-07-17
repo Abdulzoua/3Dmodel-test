@@ -69,13 +69,13 @@
 				controls.reset();
 
 		// Code for revising camera starts here			
-				const box = new THREE.Box3().setFromObject(gltf);
+				const box = new THREE.Box3().setFromObject(obj);
 				const size = box.getSize(new THREE.Vector3()).length();
 				const center = box.getCenter(new THREE.Vector3());
 
-				gltf.position.x += (gltf.position.x - center.x);
-				gltf.position.y += (gltf.position.y - center.y);
-				gltf.position.z += (gltf.position.z - center.z);
+				obj.position.x += (obj.position.x - center.x);
+				obj.position.y += (obj.position.y - center.y);
+				obj.position.z += (obj.position.z - center.z);
 
 				camera.near = size / 100;
 				camera.far = size * 100;
