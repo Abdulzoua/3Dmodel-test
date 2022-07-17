@@ -68,28 +68,7 @@
 	
 				controls.reset();
 
-		// Code for revising camera starts here			
-				const box = new THREE.Box3().setFromObject(obj);
-				const size = box.getSize(new THREE.Vector3()).length();
-				const center = box.getCenter(new THREE.Vector3());
-
-				obj.position.x += (obj.position.x - center.x);
-				obj.position.y += (obj.position.y - center.y);
-				obj.position.z += (obj.position.z - center.z);
-
-				camera.near = size / 100;
-				camera.far = size * 100;
-				camera.updateProjectionMatrix();
-
-				camera.position.copy(center);
-				camera.position.x += size / 2.0;
-				camera.position.y += size / 5.0;
-				camera.position.z += size / 2.0;
-				camera.lookAt(center);
-
-				controls.maxDistance = size * 10;
-				controls.update();
-	      // code ends here 
+		
 					gltf.scene.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
@@ -107,11 +86,11 @@
 
 							child.material.side = THREE.DoubleSide;
 
-							child.scale.multiplyScalar( 0.5 );
+							child.scale.multiplyScalar( 1 );
 
 							// recenter
 
-							new THREE.Box3().setFromObject( child ).getCenter( child.position ).multiplyScalar( - 1 );
+							new THREE.Box3().setFromObject( child ).getCenter( child.position ).multiplyScalar(2 );
 
 							scene.add( child );
 
@@ -124,11 +103,11 @@
 				} );
 
 
-	          		//window.addEventListener( 'resize', onWindowResize );
+	          		window.addEventListener( 'resize', onWindowResize );
 
 			} 
 
-			/* function onWindowResize() {
+			function onWindowResize() {
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -137,7 +116,7 @@
 
 				render();
 
-			}  */
+			}  
 
 			function render() {
 
