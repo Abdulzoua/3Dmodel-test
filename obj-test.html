@@ -65,6 +65,30 @@
 
 				// model
 				new GLTFLoader().load( 'Fin-Corner-Model.glb', function ( gltf ) {
+		// Code for revising camera starts here			
+				const box = new THREE.Box3().setFromObject(obj);
+				const size = box.getSize(new THREE.Vector3()).length();
+				const center = box.getCenter(new THREE.Vector3());
+
+				obj.position.x += (obj.position.x - center.x);
+				obj.position.y += (obj.position.y - center.y);
+				obj.position.z += (obj.position.z - center.z);
+
+				camera.near = size / 100;
+				camera.far = size * 100;
+				camera.updateProjectionMatrix();
+
+				camera.position.copy(center);
+				camera.position.x += size / 2.0;
+				camera.position.y += size / 5.0;
+				camera.position.z += size / 2.0;
+				camera.lookAt(center);
+
+				controls.maxDistance = size * 10;
+				controls.update();
+	      // code ends here 	
+				controls.reset();
+
 
 					gltf.scene.traverse( function ( child ) {
 
