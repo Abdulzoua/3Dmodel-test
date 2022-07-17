@@ -65,6 +65,9 @@
 
 				// model
 				new GLTFLoader().load( 'Fin-Corner-Model.glb', function ( gltf ) {
+	
+				controls.reset();
+
 		// Code for revising camera starts here			
 				const box = new THREE.Box3().setFromObject(gltf);
 				const size = box.getSize(new THREE.Vector3()).length();
@@ -86,10 +89,7 @@
 
 				controls.maxDistance = size * 10;
 				controls.update();
-	      // code ends here 	
-				controls.reset();
-
-
+	      // code ends here 
 					gltf.scene.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
