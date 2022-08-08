@@ -7,7 +7,14 @@ body {
 	line-height: 24px;
 	overscroll-behavior: none;
 }
-
+controls {
+		  position: absolute;
+		  display: flex;
+		  flex-direction: column;
+		  align-items: left;
+		  bottom: 8px;
+		  left: 8px;
+		}
 a {
 	color: #ff0;
 	text-decoration: none;
@@ -24,7 +31,7 @@ button {
 
 
 
-a, button, input, select {
+a, button, input, select,controls {
 	pointer-events: auto;
 }
 
